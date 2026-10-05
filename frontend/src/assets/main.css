@@ -1,0 +1,316 @@
+@import "tailwindcss";
+
+/* =========================================================
+   ДИЗАЙН-ТОКЕНЫ
+   ========================================================= */
+
+:root {
+  /* Фон всей страницы */
+  --color-bg: #f8fafc;
+  /* Фон карточек, полей и других поверхностей */
+  --color-surface: #ffffff;
+  /* Основной цвет текста */
+  --color-text: #0f172a;
+  /* Второстепенный / менее важный текст */
+  --color-muted: #303740;
+  /* Основной акцентный цвет интерфейса */
+  --color-accent: #091d49;
+  /* Акцентный цвет при наведении (кнопки, select) */
+  --color-accent-hover: #9fabcb;
+  /* Цвет текста на акцентной кнопке при наведении */
+  --color-accent-hover-text: #0f172a;
+  /* Цвет обводки фокуса (кнопки, поля, select) */
+  --color-focus-ring: rgb(9 29 73 / 0.25);
+  /* Зелёный — успех / завершено / доступно */
+  --color-success: #16a34a;
+  /* Жёлтый / оранжевый — ожидание / предупреждение */
+  --color-warning: #d97706;
+  /* Красный — ошибка / опасность / просрочено */
+  --color-danger: #dc2626;
+  /* Обводка фокуса для опасной кнопки */
+  --color-danger-ring: rgb(220 38 38 / 0.25);
+  /* Цвет границ элементов */
+  --color-border: #000000;
+  /* Единое скругление элементов — 12px */
+  --radius: 0.75rem;
+}
+
+/* =========================================================
+   БАЗОВЫЕ СТИЛИ
+   ========================================================= */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   КАРТОЧКА
+   ========================================================= */
+
+.card {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+}
+
+/* =========================================================
+   ПОЛЯ ВВОДА — input / select / textarea
+   ========================================================= */
+
+.input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.input::placeholder {
+  color: var(--color-muted);
+}
+
+/* Select */
+select.input {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230F172A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.25rem;
+}
+
+select.input:hover {
+  border-color: var(--color-accent);
+}
+
+select.input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+select.input option {
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 0.5rem;
+}
+
+select.input option:checked {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+select.input option:hover {
+  background: var(--color-accent-hover);
+  color: var(--color-accent-hover-text);
+}
+
+/* =========================================================
+   КНОПКИ
+   ========================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, opacity 0.15s, box-shadow 0.15s;
+}
+
+.btn:hover {
+  background: var(--color-accent-hover);
+  color: var(--color-accent-hover-text);
+}
+
+.btn:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-bg);
+}
+
+.btn-secondary:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.btn-danger {
+  background: var(--color-danger);
+  border: 2px solid var(--color-border);
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+  color: #fff;
+}
+
+.btn-danger:focus {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px var(--color-danger-ring);
+}
+
+/* =========================================================
+   БЕЙДЖИ / СТАТУСЫ
+   ========================================================= */
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-success {
+  background: #dcfce7;
+  color: var(--color-success);
+}
+
+.badge-warning {
+  background: #fef3c7;
+  color: var(--color-warning);
+}
+
+.badge-danger {
+  background: #fee2e2;
+  color: var(--color-danger);
+}
+
+.badge-muted {
+  background: #f1f5f9;
+  color: var(--color-muted);
+}
+
+/* =========================================================
+   ЗАГОЛОВКИ
+   ========================================================= */
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 1.5rem;
+}
+
+.section-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 1rem;
+}
+
+/* =========================================================
+   ТАБЛИЦА
+   ========================================================= */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  border: 2px solid var(--color-border);
+}
+
+.table th {
+  text-align: left;
+  padding: 0.75rem 0.5rem;
+  color: var(--color-muted);
+  font-weight: 500;
+  border-bottom: 4px solid var(--color-border);
+}
+
+.table td {
+  padding: 0.75rem 0.5rem;
+  border-bottom: 3px solid var(--color-border);
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* =========================================================
+   СООБЩЕНИЯ
+   ========================================================= */
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  border: 3px solid var(--color-border);
+}
+
+.alert-danger {
+  background: #fee2e2;
+  color: var(--color-danger);
+}
+
+.alert-success {
+  background: #dcfce7;
+  color: var(--color-success);
+}
+
+/* =========================================================
+   СЕТКА И РАСКЛАДКА
+   ========================================================= */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
